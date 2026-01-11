@@ -1,0 +1,10 @@
+<parameter name="content">{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "checkJs": false,
+    "jsx": "react"
+  },
+  "exclude": ["node_modules", "public/js/main.js"]
+}
+</parameter>

@@ -1,0 +1,281 @@
+<parameter name="content"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamal IT Solutions - Expert IT Support & Administration</title>
+    <meta name="description" content="Professional IT support and administration services. We provide comprehensive IT solutions for businesses of all sizes.">
+    <meta name="keywords" content="IT support, IT administration, network security, cloud services, managed IT, tech solutions">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/logo-animations.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.svg" alt="Kamal IT Solutions Logo" width="50" height="50">
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="highlight">Expert IT Support</span><br>
+                    & Administration Services
+                </h1>
+                <p class="hero-description">
+                    Reliable, professional IT solutions designed to keep your business running smoothly. 
+                    From network security to cloud services, we've got you covered.
+                </p>
+                <div class="hero-buttons">
+                    <a href="services.html" class="btn btn-primary">Our Services</a>
+                    <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+                </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="500">0</span>
+                    <span class="stat-label">Clients Served</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="15">0</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="99">0</span>
+                    <span class="stat-label">% Satisfaction</span>
+                </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive IT Solutions for Your Business</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Network Security</h3>
+                    <p class="service-description">Protect your business from cyber threats with our comprehensive security solutions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Cloud Services</h3>
+                    <p class="service-description">Scalable cloud solutions for storage, computing, and business applications.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Managed IT Services</h3>
+                    <p class="service-description">Full IT management and monitoring to keep your systems running optimally.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Software Development</h3>
+                    <p class="service-description">Custom software solutions tailored to your specific business needs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Hardware Support</h3>
+                    <p class="service-description">Expert installation, maintenance, and repair of IT infrastructure.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">24/7 Help Desk</h3>
+                    <p class="service-description">Round-the-clock technical support to resolve any IT issues quickly.</p>
+                </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <h2 class="section-title">Our Technology Partners</h2>
+            <p class="section-subtitle">We work with industry-leading technology providers</p>
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <img src="images/h3c.svg" alt="H3C Technologies">
+                    <span class="partner-name">H3C</span>
+                </div>
+                <div class="partner-logo">
+                    <img src="images/huawei.svg" alt="Huawei">
+                    <span class="partner-name">Huawei</span>
+                </div>
+                <div class="partner-logo">
+                    <img src="images/techmahindra.svg" alt="Tech Mahindra">
+                    <span class="partner-name">Tech Mahindra</span>
+                </div>
+                <div class="partner-logo">
+                    <img src="images/focusgroup.svg" alt="Focus Group">
+                    <span class="partner-name">Focus Group</span>
+                </div>
+                <div class="partner-logo">
+                    <img src="images/ironservice.svg" alt="IronService">
+                    <span class="partner-name">IronService</span>
+                </div>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="about-preview">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About Kamal IT Solutions</h2>
+                <p class="about-text">
+                    With over 15 years of experience in IT support and administration, we've built a reputation for 
+                    delivering reliable, professional services to businesses of all sizes. Our team of certified 
+                    professionals is dedicated to helping your organization leverage technology for growth and efficiency.
+                </p>
+                <p class="about-text">
+                    From small startups to large enterprises, we provide tailored IT solutions that meet your unique 
+                    needs. Our commitment to excellence and customer satisfaction has made us a trusted partner for 
+                    hundreds of businesses worldwide.
+                </p>
+                <a href="about.html" class="btn btn-primary">Learn More About Us</a>
+            </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Real feedback from our satisfied customers</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Kamal IT Solutions transformed our IT infrastructure. Their professional approach and expertise helped us improve efficiency by 40%."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <span class="author-name">John Smith</span>
+                            <span class="author-company">CEO, TechCorp Inc.</span>
+                        </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"The 24/7 support team is exceptional. Any issue is resolved quickly, minimizing our downtime and keeping our operations smooth."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <span class="author-name">Sarah Johnson</span>
+                            <span class="author-company">Operations Manager, GlobalTech</span>
+                        </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Their cloud migration services were seamless. We couldn't be happier with the results and the ongoing support we receive."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <span class="author-name">Michael Chen</span>
+                            <span class="author-company">CTO, Innovate Labs</span>
+                        </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Transform Your IT Infrastructure?</h2>
+                <p class="cta-description">Contact us today for a free consultation and discover how we can help your business grow with expert IT support.</p>
+                <a href="contact.html" class="btn btn-primary btn-large">Get Started</a>
+            </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="logo">
+                        <img src="images/logo.svg" alt="Kamal IT Solutions Logo" width="40" height="40">
+                        <span class="logo-text">Kamal IT Solutions</span>
+                    </div>
+                    <p class="footer-description">
+                        Expert IT support and administration services for businesses of all sizes. 
+                        Your trusted technology partner.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Network Security</a></li>
+                        <li><a href="services.html">Cloud Services</a></li>
+                        <li><a href="services.html">Managed IT</a></li>
+                        <li><a href="services.html">24/7 Help Desk</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li>📍 123 Business District</li>
+                        <li>📧 info@kamalitsolutions.com</li>
+                        <li>📞 +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2024 Kamal IT Solutions. All rights reserved.</p>
+            </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+</parameter>

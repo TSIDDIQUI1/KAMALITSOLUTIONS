@@ -1,0 +1,57 @@
+<parameter name="content">/* ============================================
+   LOGO ANIMATIONS
+   ============================================ */
+@keyframes rotateClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateCounterClockwise {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes nodeGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes floatBinary {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-5px); opacity: 1; }
+}
+
+.logo-orbit-1 {
+  animation: rotateClockwise 20s linear infinite;
+  transform-origin: 100px 100px;
+}
+
+.logo-orbit-2 {
+  animation: rotateCounterClockwise 15s linear infinite;
+  transform-origin: 100px 100px;
+}
+
+.logo-orbit-3 {
+  animation: rotateClockwise 25s linear infinite;
+  transform-origin: 100px 100px;
+}
+
+.logo-node-pulse {
+  animation: nodeGlow 2s ease-in-out infinite;
+}
+
+.logo-binary-float {
+  animation: floatBinary 4s ease-in-out infinite;
+}
+
+/* Header and Footer Logo Styles */
+.header .logo img {
+  width: 50px;
+  height: 50px;
+}
+
+.footer .logo img {
+  width: 40px;
+  height: 40px;
+}
+</parameter>

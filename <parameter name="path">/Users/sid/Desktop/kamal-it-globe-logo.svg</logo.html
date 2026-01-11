@@ -1,0 +1,117 @@
+<parameter name="content"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 140" width="480" height="140">
+  <defs>
+    <radialGradient id="globeGrad" cx="35%" cy="35%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="landGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.8" />
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="globeClip">
+      <circle cx="70" cy="70" r="55"/>
+    </clipPath>
+  </defs>
+  
+  <!-- Globe background glow -->
+  <circle cx="70" cy="70" r="65" fill="url(#globeGrad)" opacity="0.15"/>
+  
+  <!-- Main globe -->
+  <circle cx="70" cy="70" r="58" fill="#e0f2fe" stroke="url(#globeGrad)" stroke-width="3"/>
+  
+  <!-- Globe grid lines (lat/long) -->
+  <g fill="none" stroke="#3b82f6" stroke-width="0.8" opacity="0.4">
+    <ellipse cx="70" cy="70" rx="58" ry="18"/>
+    <ellipse cx="70" cy="70" rx="58" ry="36"/>
+    <ellipse cx="70" cy="70" rx="58" ry="54"/>
+    <ellipse cx="70" cy="70" rx="28" ry="58"/>
+    <line x1="70" y1="12" x2="70" y2="128"/>
+    <line x1="12" y1="70" x2="128" y2="70"/>
+  </g>
+  
+  <!-- World map continents inside globe -->
+  <g clip-path="url(#globeClip)" fill="url(#landGrad)">
+    <!-- North America -->
+    <path d="M35 25 Q25 35 28 50 Q32 58 40 55 Q50 52 48 40 Q45 28 35 25 Z"/>
+    <!-- South America -->
+    <path d="M50 70 Q45 75 48 95 Q55 110 62 105 Q68 95 65 80 Q60 68 50 70 Z"/>
+    <!-- Europe -->
+    <path d="M75 30 Q68 32 68 42 Q72 48 80 45 Q88 40 85 32 Q82 26 75 30 Z"/>
+    <!-- Africa -->
+    <path d="M78 52 Q70 55 72 75 Q78 90 88 88 Q98 82 95 65 Q92 54 78 52 Z"/>
+    <!-- Asia -->
+    <path d="M90 28 Q80 30 85 45 Q95 52 110 48 Q120 40 115 30 Q105 22 90 28 Z"/>
+    <!-- Australia -->
+    <path d="M105 85 Q98 88 100 100 Q108 105 115 102 Q120 95 115 88 Q110 82 105 85 Z"/>
+  </g>
+  
+  <!-- Globe outline -->
+  <circle cx="70" cy="70" r="58" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+  
+  <!-- Network nodes and connections (digitalization) -->
+  <g filter="url(#glow)">
+    <!-- Connection lines -->
+    <g stroke="url(#lineGrad)" stroke-width="2" opacity="0.8">
+      <line x1="35" y1="40" x2="60" y2="30"/>
+      <line x1="60" y1="30" x2="100" y2="40"/>
+      <line x1="100" y1="40" x2="110" y2="75"/>
+      <line x1="110" y1="75" x2="90" y2="95"/>
+      <line x1="90" y1="95" x2="55" y2="80"/>
+      <line x1="55" y1="80" x2="35" y2="40"/>
+      <line x1="35" y1="40" x2="55" y2="80"/>
+      <line x1="100" y1="40" x2="60" y2="30"/>
+      <line x1="55" y1="80" x2="110" y2="75"/>
+    </g>
+    
+    <!-- Node points -->
+    <circle cx="35" cy="40" r="6" fill="#2563eb"/>
+    <circle cx="60" cy="30" r="5" fill="#3b82f6"/>
+    <circle cx="100" cy="40" r="5" fill="#3b82f6"/>
+    <circle cx="110" cy="75" r="6" fill="#2563eb"/>
+    <circle cx="90" cy="95" r="5" fill="#3b82f6"/>
+    <circle cx="55" cy="80" r="5" fill="#3b82f6"/>
+    <circle cx="70" cy="70" r="4" fill="#06b6d4"/>
+  </g>
+  
+  <!-- Data flow dots -->
+  <g fill="#22d3ee">
+    <circle cx="48" cy="35" r="2.5"/>
+    <circle cx="80" cy="35" r="2.5"/>
+    <circle cx="105" cy="58" r="2.5"/>
+    <circle cx="100" cy="85" r="2.5"/>
+    <circle cx="72" cy="88" r="2.5"/>
+    <circle cx="45" cy="60" r="2.5"/>
+  </g>
+  
+  <!-- Company text -->
+  <g font-family="'Segoe UI', 'Inter', Arial, sans-serif">
+    <text x="160" y="60" font-size="38" font-weight="700" fill="#1e293b" letter-spacing="2">KAMAL</text>
+    <text x="275" y="60" font-size="38" font-weight="600" fill="url(#globeGrad)" letter-spacing="3">IT</text>
+    <text x="320" y="60" font-size="38" font-weight="300" fill="#64748b">SOLUTIONS</text>
+    
+    <!-- Tagline -->
+    <text x="160" y="90" font-size="12" fill="#94a3b8" letter-spacing="5" font-weight="400">DIGITALIZATION &amp; CONNECTIVITY</text>
+  </g>
+  
+  <!-- Decorative elements -->
+  <rect x="160" y="102" width="80" height="4" fill="url(#lineGrad)" rx="2"/>
+  
+  <!-- Small tech accents -->
+  <circle cx="130" cy="55" r="3" fill="#2563eb" opacity="0.6"/>
+  <circle cx="130" cy="70" r="2" fill="#3b82f6" opacity="0.5"/>
+  <circle cx="130" cy="82" r="2" fill="#60a5fa" opacity="0.4"/>
+</svg>
+</parameter>

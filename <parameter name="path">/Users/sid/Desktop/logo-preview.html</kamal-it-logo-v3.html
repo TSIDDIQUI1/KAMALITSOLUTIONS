@@ -1,0 +1,284 @@
+<parameter name="content"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamal IT Solutions - Logo Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .preview-container {
+            background: linear-gradient(145deg, #1a1f26, #21262f);
+            border-radius: 30px;
+            padding: 60px 80px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(56, 189, 248, 0.08);
+            text-align: center;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+        
+        .logo-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .text-container {
+            text-align: left;
+        }
+        
+        /* Animated Ring */
+        .orbit-ring {
+            fill: none;
+            stroke: #38bdf8;
+            stroke-width: 1.5;
+            opacity: 0.6;
+        }
+        
+        .orbit-1 {
+            animation: rotateClockwise 20s linear infinite;
+            transform-origin: 100px 100px;
+        }
+        
+        .orbit-2 {
+            animation: rotateCounterClockwise 15s linear infinite;
+            transform-origin: 100px 100px;
+        }
+        
+        .orbit-3 {
+            animation: rotateClockwise 25s linear infinite;
+            transform-origin: 100px 100px;
+        }
+        
+        @keyframes rotateClockwise {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes rotateCounterClockwise {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        
+        /* Central K Letter */
+        .central-k-bg {
+            fill: #0d1117;
+            stroke: #38bdf8;
+            stroke-width: 2;
+        }
+        
+        .central-k {
+            fill: #38bdf8;
+            font-family: 'Arial Black', 'Segoe UI', sans-serif;
+            font-size: 55px;
+            font-weight: 900;
+            filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.8));
+        }
+        
+        /* Data Streams */
+        .data-stream {
+            stroke: #38bdf8;
+            stroke-width: 2;
+            stroke-linecap: round;
+            opacity: 0.7;
+            stroke-dasharray: 8 4;
+            animation: flowData 1s linear infinite;
+        }
+        
+        @keyframes flowData {
+            from { stroke-dashoffset: 12; }
+            to { stroke-dashoffset: 0; }
+        }
+        
+        /* Circuit Nodes */
+        .node {
+            fill: #38bdf8;
+            filter: drop-shadow(0 0 6px #38bdf8);
+        }
+        
+        .node-pulse {
+            fill: #38bdf8;
+            filter: drop-shadow(0 0 10px #38bdf8);
+            animation: nodeGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes nodeGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.85); }
+        }
+        
+        /* Tech Lines */
+        .tech-line {
+            stroke: #38bdf8;
+            stroke-width: 1;
+            opacity: 0.5;
+        }
+        
+        .tech-line-accent {
+            stroke: #38bdf8;
+            stroke-width: 2;
+            opacity: 0.8;
+        }
+        
+        /* Binary Particles */
+        .binary {
+            fill: #38bdf8;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            opacity: 0.6;
+            animation: floatBinary 4s ease-in-out infinite;
+        }
+        
+        @keyframes floatBinary {
+            0%, 100% { transform: translateY(0); opacity: 0.6; }
+            50% { transform: translateY(-5px); opacity: 1; }
+        }
+        
+        /* Text Elements */
+        .brand-name {
+            font-family: 'Arial Black', 'Segoe UI', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #000000;
+            letter-spacing: -1px;
+        }
+        
+        .it-text {
+            font-family: 'Arial Black', 'Segoe UI', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #38bdf8;
+            letter-spacing: -1px;
+        }
+        
+        .solutions-text {
+            font-family: 'Arial', 'Segoe UI', sans-serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: #6b7280;
+            letter-spacing: 1px;
+        }
+        
+        .tagline {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 12px;
+            color: #94a3b8;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(148, 163, 184, 0.15);
+        }
+        
+        .logo-title {
+            font-size: 12px;
+            color: #38bdf8;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <p class="logo-title">KAMAL IT SOLUTIONS</p>
+        
+        <div class="logo-wrapper">
+            <!-- Main Logo Icon -->
+            <div class="logo-container">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Orbiting Rings -->
+                    <ellipse class="orbit-ring orbit-1" cx="100" cy="100" rx="80" ry="30"/>
+                    <ellipse class="orbit-ring orbit-2" cx="100" cy="100" rx="70" ry="70"/>
+                    <ellipse class="orbit-ring orbit-3" cx="100" cy="100" rx="30" ry="80"/>
+                    
+                    <!-- Orbiting Dots -->
+                    <circle class="node" cx="180" cy="100" r="4" style="animation: rotateClockwise 20s linear infinite; transform-origin: 100px 100px;"/>
+                    <circle class="node" cx="30" cy="100" r="4" style="animation: rotateCounterClockwise 15s linear infinite; transform-origin: 100px 100px;"/>
+                    <circle class="node" cx="100" cy="20" r="3" style="animation: rotateClockwise 25s linear infinite; transform-origin: 100px 100px;"/>
+                    
+                    <!-- Central K Background Circle -->
+                    <circle class="central-k-bg" cx="100" cy="100" r="45"/>
+                    
+                    <!-- Central K Letter -->
+                    <text class="central-k" x="100" y="118" text-anchor="middle">K</text>
+                    
+                    <!-- Data Streams from Center -->
+                    <line class="data-stream" x1="100" y1="55" x2="100" y2="25"/>
+                    <line class="data-stream" x1="100" y1="145" x2="100" y2="175" style="animation-delay: -0.3s;"/>
+                    <line class="data-stream" x1="55" y1="100" x2="25" y2="100" style="animation-delay: -0.6s;"/>
+                    <line class="data-stream" x1="145" y1="100" x2="175" y2="100" style="animation-delay: -0.9s;"/>
+                    
+                    <!-- Tech Lines -->
+                    <path class="tech-line-accent" d="M100 25 L100 15 M100 185 L100 175 M25 100 L15 100 M185 100 L175 100" filter="url(#glow)"/>
+                    
+                    <!-- Corner Circuit Nodes -->
+                    <circle class="node-pulse" cx="30" cy="30" r="5"/>
+                    <circle class="node" cx="170" cy="30" r="4"/>
+                    <circle class="node" cx="30" cy="170" r="4"/>
+                    <circle class="node-pulse" cx="170" cy="170" r="5"/>
+                    
+                    <!-- Connecting Lines -->
+                    <line class="tech-line" x1="30" y1="30" x2="55" y2="55"/>
+                    <line class="tech-line" x1="170" y1="30" x2="145" y2="55"/>
+                    <line class="tech-line" x1="30" y1="170" x2="55" y2="145"/>
+                    <line class="tech-line" x1="170" y1="170" x2="145" y2="145"/>
+                    
+                    <!-- Binary Data Particles -->
+                    <text class="binary" x="45" y="40" style="animation-delay: 0s;">1</text>
+                    <text class="binary" x="155" y="40" style="animation-delay: 0.5s;">0</text>
+                    <text class="binary" x="45" y="165" style="animation-delay: 1s;">1</text>
+                    <text class="binary" x="155" y="165" style="animation-delay: 1.5s;">0</text>
+                    <text class="binary" x="90" y="25" style="animation-delay: 2s;">1</text>
+                    <text class="binary" x="110" y="180" style="animation-delay: 2.5s;">0</text>
+                    
+                    <!-- Outer Tech Circle -->
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="#38bdf8" stroke-width="0.5" opacity="0.3"/>
+                </svg>
+            </div>
+            
+            <!-- Text Container -->
+            <div class="text-container">
+                <div>
+                    <span class="brand-name">Kamal</span>
+                    <span class="it-text"> IT</span>
+                    <span class="solutions-text"> Solutions</span>
+                </div>
+                <div class="tagline">EXPERT IT SUPPORT &amp; ADMINISTRATION</div>
+        </div>
+        
+        <p style="color: #38bdf8; font-size: 11px; opacity: 0.7;">Futuristic Tech Logo Design</p>
+    </div>
+</body>
+</html>
+</parameter>
