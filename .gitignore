@@ -31,6 +31,13 @@ yarn-error.log*
 Thumbs.db
 *.pem
 
+# Python
+.venv/
+venv/
+env/
+.venv*
+venv*
+
 # Testing
 coverage/
 .nyc_output/
@@ -38,4 +45,10 @@ coverage/
 # Misc
 *.tgz
 .cache
+
+# SSL Certificates (keep local only)
+ssl/
+certs/
+*.crt
+*.key
 

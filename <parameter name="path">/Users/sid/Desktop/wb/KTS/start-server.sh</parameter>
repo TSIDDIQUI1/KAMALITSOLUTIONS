@@ -1,4 +1,0 @@
-<parameter name="content">#!/bin/bash
-cd /Users/sid/Desktop/wb/KTS
-node server.js
-</parameter>
