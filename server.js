@@ -35,6 +35,8 @@ const EMAIL_USER = envConfig.EMAIL_USER || "your-email@gmail.com";
 const EMAIL_PASS = envConfig.EMAIL_PASS || "your-app-password";
 
 const app = express();
+app.set("trust proxy", 1); // Trust Render reverse proxy
+
 const PORT = process.env.PORT || 3000;
 
 // Rate limiting
@@ -329,7 +331,7 @@ if (hasSSL) {
 } else {
   // No SSL certificates - use HTTP server for local development
   const httpServer = http.createServer(app);
-  
+
   httpServer.listen(PORT, "0.0.0.0", () => {
     console.log(
       "\nKamal IT Solutions - Server Running (HTTP)\n" +
