@@ -1682,3 +1682,27 @@ p {
   background-color: var(--primary-blue);
   color: var(--text-light);
 }
+
+/* ============================================
+  TEAM AVATAR LINK STYLES
+   ============================================ */
+
+.team-avatar-link {
+  display: inline-block;
+  margin-bottom: var(--spacing-lg);
+  transition: transform var(--transition-base);
+}
+
+.team-avatar-link:hover {
+  transform: scale(1.05);
+}
+
+.team-avatar-link:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 50%;
+}
+
+.team-avatar-link:focus-visible {
+  box-shadow: var(--focus-ring);
+}
