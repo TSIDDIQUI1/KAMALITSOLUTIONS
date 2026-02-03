@@ -173,6 +173,47 @@
     </div>
     <div class="video-overlay"></div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var video = document.getElementById('bgVideo');
+            if (!video || typeof window.matchMedia !== 'function') return;
+
+            var mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            function handleMotionPreference(event) {
+                var prefersReduced = event.matches;
+
+                if (prefersReduced) {
+                    // Respect reduced-motion: stop the background animation
+                    video.pause();
+                    video.removeAttribute('autoplay');
+                    video.removeAttribute('loop');
+                } else {
+                    // Allow motion: ensure autoplay/loop are enabled
+                    video.setAttribute('autoplay', '');
+                    video.setAttribute('loop', '');
+
+                    // Attempt to play; ignore failures (e.g. browser policies)
+                    var playPromise = video.play();
+                    if (playPromise && typeof playPromise.catch === 'function') {
+                        playPromise.catch(function () { /* no-op */ });
+                    }
+                }
+            }
+
+            // Apply on initial load
+            handleMotionPreference(mediaQuery);
+
+            // React to preference changes
+            if (typeof mediaQuery.addEventListener === 'function') {
+                mediaQuery.addEventListener('change', handleMotionPreference);
+            } else if (typeof mediaQuery.addListener === 'function') {
+                // Safari / older browsers
+                mediaQuery.addListener(handleMotionPreference);
+            }
+        });
+    </script>
+
     <!-- Demo Content -->
     <div class="content">
         <h1>Welcome to Kamal IT Solutions</h1>
