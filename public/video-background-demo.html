@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Background Demo - Kamal IT Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Video Background Styles */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        /* Overlay to make text readable */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 115, 232, 0.3);
+            z-index: 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-text span {
+            color: #a8d3ff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: white;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: #1a73e8;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: #1557b0;
+            transform: translateY(-2px);
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Common section styles */
+        .video-section {
+            padding: 100px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-section h2 {
+            font-size: 2.5rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-section .section-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Content */
+        .hero-content {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin-bottom: 35px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #1a73e8;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1557b0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 115, 232, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Glass Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 35px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            color: white;
+            margin-bottom: 12px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            color: #a8d3ff;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .service-link:hover {
+            color: white;
+            gap: 12px;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: white;
+        }
+
+        .feature-content h4 {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.2);
+            line-height: 1;
+            margin-bottom: -20px;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Partners */
+        .partners-section {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .partner-logo {
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            filter: brightness(0) invert(1);
+            max-width: 140px;
+            height: auto;
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background-color: white;
+            color: #1a73e8;
+        }
+
+        .btn-light:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .contact-content h4 {
+            font-size: 1.15rem;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .contact-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 80px 20px 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: #1a73e8;
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .video-section h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="images/digi.mov" type="video/quicktime">
+            <source src="images/digi.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="video-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/kamal-it-solutions-logo.svg" alt="Kamal IT Solutions Logo">
+                <span class="logo-text"><span>Kamal</span> IT Solutions</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="contact.html" class="nav-cta">Get Started</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-content">
+        <h1>Welcome to Kamal IT Solutions</h1>
+        <p>Innovating your digital future with cutting-edge technology solutions and professional IT services. We build digital solutions that drive business growth.</p>
+        <div class="hero-buttons">
+            <a href="#services" class="btn btn-primary">
+                <i class="fas fa-rocket"></i>
+                Explore Services
+            </a>
+            <a href="index.html" class="btn btn-secondary">
+                <i class="fas fa-home"></i>
+                Back to Home
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="video-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <p class="section-subtitle">Comprehensive IT solutions tailored to your business needs</p>
+            
+            <div class="services-grid">
+                <div class="glass-card service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Infrastructure</h3>
+                    <p>Your remote extension in the datacenter — providing immediate, hands-on assistance without the need for your team to travel.</p>
+                    <a href="data-infrastructure.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="glass-card service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Cloud migration, infrastructure management, and serverless solutions. Scalable and secure cloud services for modern businesses.</p>
+                    <a href="cloud-solutions.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="glass-card service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Comprehensive security solutions including penetration testing, vulnerability assessment, and security auditing to protect your digital assets.</p>
+                    <a href="cybersecurity.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="glass-card service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Custom website development using latest technologies. Responsive, fast, and SEO-optimized websites that convert visitors into customers.</p>
+                    <a href="web-development.html" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="glass-card service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App Development</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android. User-friendly apps with seamless performance and engaging UX.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="glass-card service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>IT Support & Maintenance</h3>
+                    <p>24/7 technical support, maintenance services, and IT consulting. We keep your systems running smoothly so you can focus on business.</p>
+                    <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="video-section">
+        <div class="container">
+            <h2>Why Choose Us</h2>
+            <p class="section-subtitle">What makes Kamal IT Solutions stand out</p>
+            
+            <div class="features-grid">
+                <div class="glass-card feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Fast Delivery</h4>
+                        <p>We pride ourselves on timely project delivery without compromising quality.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Expert Team</h4>
+                        <p>Our team consists of certified professionals with years of industry experience.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Secure Solutions</h4>
+                        <p>Security is built into our development process. We follow best practices.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Scalable Architecture</h4>
+                        <p>Solutions designed to grow with your business and adapt to changing needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="video-section">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <p class="section-subtitle">Don't just take our word for it</p>
+            
+            <div class="testimonials-grid">
+                <div class="glass-card testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Kamal IT Solutions transformed our business with their exceptional web development services. Their team was professional, responsive, and delivered beyond our expectations.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JD</div>
+                        <div>
+                            <div class="testimonial-name">John Davidson</div>
+                            <div class="testimonial-role">CEO, TechStart Inc.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Working with Kamal IT Solutions was a game-changer for our company. Their mobile app development expertise helped us reach customers like never before.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div>
+                            <div class="testimonial-name">Sarah Mitchell</div>
+                            <div class="testimonial-role">Founder, RetailMax</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">The team's expertise in cloud solutions helped us migrate our infrastructure seamlessly. We've seen improved performance and reduced costs.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RC</div>
+                        <div>
+                            <div class="testimonial-name">Robert Chen</div>
+                            <div class="testimonial-role">CTO, Global Finance Corp</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="video-section partners-section">
+        <div class="container">
+            <h2>Trusted Partners</h2>
+            <p class="section-subtitle">We work with leading technology companies worldwide</p>
+            
+            <div class="partners-grid">
+                <img src="images/techmahindra.svg" alt="Tech Mahindra" class="partner-logo">
+                <img src="images/focusgroup.svg" alt="Focus Group" class="partner-logo">
+                <img src="images/ironservice.svg" alt="Iron Service Global" class="partner-logo">
+                <img src="images/h3c.svg" alt="H3C" class="partner-logo">
+                <img src="images/huawei.svg" alt="Huawei" class="partner-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="video-section cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's discuss your project and discover how Kamal IT Solutions can help you achieve your digital goals. Contact us today for a free consultation.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-light">
+                    <i class="fas fa-comments"></i>
+                    Get Free Consultation
+                </a>
+                <a href="https://teams.live.com/meet/93473401425074?p=vNovEpvO8gHN2HVoUM" class="btn btn-secondary">
+                    <i class="fas fa-video"></i>
+                    Join a Meeting
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="video-section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">Have a project in mind? We'd love to hear from you</p>
+            
+            <div class="contact-grid">
+                <div class="glass-card contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h4>Our Location</h4>
+                        <p>3702 West Falcon Meadow Way<br>South Jordan, UT. 84009</p>
+                    </div>
+                </div>
+
+                <div class="glass-card contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h4>Email Us</h4>
+                        <p>info@kamalitsolutions.us<br>kamalitsolutions.us@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="glass-card contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h4>Call Us</h4>
+                        <p>+49 (155) 10932734<br>+49 (176) 60367376</p>
+                    </div>
+                </div>
+
+                <div class="glass-card contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h4>Working Hours</h4>
+                        <p>Monday - Friday: 9AM - 6PM<br>Saturday: 10AM - 4PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="images/kamal-it-solutions-logo-footer.svg" alt="Kamal IT Solutions Logo">
+                        <span class="logo-text"><span>Kamal</span> IT Solutions</span>
+                    </a>
+                    <p>Innovating your digital future with professional IT solutions and cutting-edge technology services.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/share/1EwCfusyXb/?mibextid=wwXIfr" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/solutions_61780" aria-label="X">X</a>
+                        <a href="https://www.linkedin.com/company/kamal-it-solutions/" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/kamalitsolutions.us/" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="data-infrastructure.html">Data Infrastructure</a></li>
+                        <li><a href="web-development.html">Web Development</a></li>
+                        <li><a href="cloud-solutions.html">Cloud Solutions</a></li>
+                        <li><a href="cybersecurity.html">Cybersecurity</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 Kamal IT Solutions. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="cookie-policy.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Ensure video plays
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('bgVideo');
+            video.play().catch(function(error) {
+                console.log('Auto-play prevented:', error);
+            });
+        });
+
+        // Handle visibility change to pause/play video
+        document.addEventListener('visibilitychange', function() {
+            const video = document.getElementById('bgVideo');
+            if (document.hidden) {
+                video.pause();
+            } else {
+                video.play().catch(function() {});
+            }
+        });
+    </script>
+</body>
+</html>

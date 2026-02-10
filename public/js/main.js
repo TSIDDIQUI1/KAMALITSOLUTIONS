@@ -5,12 +5,14 @@
 // ============================================
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize all components
-  initNavigation();
-  initScrollEffects();
-  initAnimations();
-  initContactForm();
-  initSmoothScroll();
+  // Initialize all components with small delays to prioritize rendering
+  requestAnimationFrame(() => {
+    setTimeout(() => initNavigation(), 10);
+    setTimeout(() => initScrollEffects(), 10);
+    setTimeout(() => initAnimations(), 10);
+    setTimeout(() => initContactForm(), 10);
+    setTimeout(() => initSmoothScroll(), 10);
+  });
 });
 
 // ============================================
@@ -21,10 +23,9 @@ function initNavigation() {
   const header = document.querySelector(".header");
   const mobileToggle = document.querySelector(".mobile-toggle");
   const navMenu = document.querySelector(".nav-menu");
-  const navLinks = document.querySelectorAll(".nav-link");
 
   // Mobile menu toggle
-  if (mobileToggle) {
+  if (mobileToggle && navMenu) {
     mobileToggle.addEventListener("click", function () {
       this.classList.toggle("active");
       navMenu.classList.toggle("active");
@@ -32,6 +33,7 @@ function initNavigation() {
   }
 
   // Close mobile menu when clicking on a link
+  const navLinks = document.querySelectorAll(".nav-link");
   navLinks.forEach((link) => {
     link.addEventListener("click", function () {
       if (mobileToggle) {
@@ -43,18 +45,33 @@ function initNavigation() {
     });
   });
 
-  // Header scroll effect
+  // Header scroll effect - optimized with throttling
   if (header) {
-    window.addEventListener("scroll", function () {
-      if (window.scrollY > 50) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-    });
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        const scrollY = window.scrollY;
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            if (scrollY > 50) {
+              header.classList.add("scrolled");
+            } else {
+              header.classList.remove("scrolled");
+            }
+            lastScrollY = scrollY;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
   }
 
-  // Active link based on scroll position
+  // Active link based on scroll position - throttled
   updateActiveNavLink();
 }
 
@@ -62,30 +79,37 @@ function initNavigation() {
 function updateActiveNavLink() {
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-link");
+  let ticking = false;
 
   window.addEventListener(
     "scroll",
     () => {
-      let current = "";
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
-        if (
-          window.scrollY >= sectionTop &&
-          window.scrollY < sectionTop + sectionHeight
-        ) {
-          current = section.getAttribute("id");
-        }
-      });
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY + 100;
+          let current = "";
 
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-          link.classList.add("active");
-        }
-      });
+          sections.forEach((section) => {
+            if (
+              scrollY >= section.offsetTop &&
+              scrollY < section.offsetTop + section.offsetHeight
+            ) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (current && link.getAttribute("href") === `#${current}`) {
+              link.classList.add("active");
+            }
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
     },
-    { passive: true }
+    { passive: true },
   );
 }
 
@@ -98,33 +122,52 @@ function initScrollEffects() {
   const observerOptions = {
     root: null,
     rootMargin: "0px",
-    threshold: 0.1,
+    threshold: 0.05,
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // Stop observing once visible
       }
     });
   }, observerOptions);
 
   // Observe elements with animation classes
   const animatedElements = document.querySelectorAll(
-    ".fade-in, .slide-in-left, .slide-in-right, .service-card, .team-card, .testimonial-card"
+    ".fade-in, .slide-in-left, .slide-in-right, .service-card, .team-card, .testimonial-card",
   );
-  animatedElements.forEach((el) => observer.observe(el));
 
-  // Parallax effect for hero shapes
+  // Batch observation for better performance
+  if (animatedElements.length > 0) {
+    requestAnimationFrame(() => {
+      animatedElements.forEach((el) => observer.observe(el));
+    });
+  }
+
+  // Parallax effect for hero shapes - optimized
   const heroShapes = document.querySelectorAll(".hero-shape");
   if (heroShapes.length > 0) {
-    window.addEventListener("scroll", () => {
-      const scrolled = window.scrollY;
-      heroShapes.forEach((shape, index) => {
-        const speed = 0.1 * (index + 1);
-        shape.style.transform = `translateY(${scrolled * speed}px)`;
-      });
-    });
+    let ticking = false;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrolled = window.scrollY;
+            heroShapes.forEach((shape, index) => {
+              const speed = 0.1 * (index + 1);
+              shape.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
   }
 }
 
@@ -145,7 +188,7 @@ function initAnimations() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     counters.forEach((counter) => counterObserver.observe(counter));
@@ -167,7 +210,7 @@ function animateCounter(element) {
     // Easing function
     const easeOutQuad = (t) => t * (2 - t);
     const current = Math.floor(
-      start + (target - start) * easeOutQuad(progress)
+      start + (target - start) * easeOutQuad(progress),
     );
 
     element.textContent = current + suffix;
@@ -213,7 +256,7 @@ function initContactForm() {
       if (response.success) {
         showNotification(
           "success",
-          "Message sent successfully! We will get back to you soon."
+          "Message sent successfully! We will get back to you soon.",
         );
         contactForm.reset();
       } else {
@@ -478,11 +521,11 @@ function getViewport() {
   return {
     width: Math.max(
       document.documentElement.clientWidth,
-      window.innerWidth || 0
+      window.innerWidth || 0,
     ),
     height: Math.max(
       document.documentElement.clientHeight,
-      window.innerHeight || 0
+      window.innerHeight || 0,
     ),
   };
 }
@@ -522,7 +565,7 @@ function initLazyLoading() {
     {
       rootMargin: "50px 0px",
       threshold: 0.01,
-    }
+    },
   );
 
   images.forEach((img) => imageObserver.observe(img));

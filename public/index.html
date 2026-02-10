@@ -31,6 +31,11 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/logo.svg">
 
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="images/hero-cloud-tech.jpg" as="image">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,11 +123,10 @@
                 <div class="hero-image">
                     <div class="hero-shape hero-shape-1"></div>
                     <div class="hero-shape hero-shape-2"></div>
-                    <!-- Hero Icon -->
-                    <div
-                        style="width: 100%; max-width: 500px; height: 400px; background-color: var(--bg-light); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-xl);">
-                        <i class="fas fa-laptop-code" style="font-size: 120px; color: var(--primary-blue);"></i>
-                    </div>
+                    <!-- Hero Image -->
+                    <img src="images/hero-cloud-tech.jpg" 
+                        alt="Digital solutions and technology development" 
+                        class="hero-image-main" width="500" height="400" loading="eager">
                 </div>
             </div>
         </section>
@@ -139,72 +143,90 @@
                 <div class="services-grid">
                     <!-- Service 1 - Data Infrastructure -->
                     <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-database"></i>
+                        <img src="images/server-room.jpg" alt="Data Infrastructure" class="service-card-image" loading="lazy" width="400" height="200">
+                        <div class="service-card-content">
+                            <div class="service-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3 class="service-title">Data Infrastructure</h3>
+                            <p class="service-description">Your remote extension in the datacenter — providing immediate,
+                                hands-on assistance without the need for your team to travel.</p>
+                            <a href="data-infrastructure.html" class="service-link">Learn More <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
-                        <h3 class="service-title">Data Infrastructure</h3>
-                        <p class="service-description">Your remote extension in the datacenter — providing immediate,
-                            hands-on assistance without the need for your team to travel.</p>
-                        <a href="data-infrastructure.html" class="service-link">Learn More <i
-                                class="fas fa-arrow-right"></i></a>
                     </div>
 
                     <!-- Service 2 - Mobile App Development -->
                     <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-mobile-alt"></i>
+                        <img src="images/code-laptop.jpg" alt="Mobile App Development" class="service-card-image" loading="lazy" width="400" height="200">
+                        <div class="service-card-content">
+                            <div class="service-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3 class="service-title">Mobile App Development</h3>
+                            <p class="service-description">Native and cross-platform mobile applications for iOS and
+                                Android. User-friendly apps with seamless performance and engaging UX.</p>
+                            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
-                        <h3 class="service-title">Mobile App Development</h3>
-                        <p class="service-description">Native and cross-platform mobile applications for iOS and
-                            Android. User-friendly apps with seamless performance and engaging UX.</p>
-                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
 
                     <!-- Service 3 - Cloud Solutions -->
                     <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-cloud"></i>
+                        <img src="images/cloud-serverless.jpg" alt="Cloud Solutions" class="service-card-image" loading="lazy" width="400" height="200">
+                        <div class="service-card-content">
+                            <div class="service-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h3 class="service-title">Cloud Solutions</h3>
+                            <p class="service-description">Cloud migration, infrastructure management, and serverless
+                                solutions. Scalable and secure cloud services for modern businesses.</p>
+                            <a href="cloud-solutions.html" class="service-link">Learn More <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
-                        <h3 class="service-title">Cloud Solutions</h3>
-                        <p class="service-description">Cloud migration, infrastructure management, and serverless
-                            solutions. Scalable and secure cloud services for modern businesses.</p>
-                        <a href="cloud-solutions.html" class="service-link">Learn More <i
-                                class="fas fa-arrow-right"></i></a>
                     </div>
 
                     <!-- Service 4 - Cybersecurity -->
                     <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-shield-alt"></i>
+                        <img src="images/security-solutions.jpg" alt="Cybersecurity" class="service-card-image" loading="lazy" width="400" height="200">
+                        <div class="service-card-content">
+                            <div class="service-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="service-title">Cybersecurity</h3>
+                            <p class="service-description">Comprehensive security solutions including penetration testing,
+                                vulnerability assessment, and security auditing to protect your digital assets.</p>
+                            <a href="cybersecurity.html" class="service-link">Learn More <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
-                        <h3 class="service-title">Cybersecurity</h3>
-                        <p class="service-description">Comprehensive security solutions including penetration testing,
-                            vulnerability assessment, and security auditing to protect your digital assets.</p>
-                        <a href="cybersecurity.html" class="service-link">Learn More <i
-                                class="fas fa-arrow-right"></i></a>
                     </div>
 
                     <!-- Service 5 - Web Development -->
                     <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
+                        <img src="images/code-laptop.jpg" alt="Web Development" class="service-card-image" loading="lazy" width="400" height="200">
+                        <div class="service-card-content">
+                            <div class="service-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="service-title">Web Development</h3>
+                            <p class="service-description">Custom website development using latest technologies. Responsive,
+                                fast, and SEO-optimized websites that convert visitors into customers.</p>
+                            <a href="web-development.html" class="service-link">Learn More <i
+                                    class="fas fa-arrow-right"></i></a>
                         </div>
-                        <h3 class="service-title">Web Development</h3>
-                        <p class="service-description">Custom website development using latest technologies. Responsive,
-                            fast, and SEO-optimized websites that convert visitors into customers.</p>
-                        <a href="web-development.html" class="service-link">Learn More <i
-                                class="fas fa-arrow-right"></i></a>
                     </div>
 
                     <!-- Service 6 - IT Support & Maintenance -->
                     <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-headset"></i>
+                        <img src="images/it-support.jpg" alt="IT Support & Maintenance" class="service-card-image" loading="lazy" width="400" height="200">
+                        <div class="service-card-content">
+                            <div class="service-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h3 class="service-title">IT Support & Maintenance</h3>
+                            <p class="service-description">24/7 technical support, maintenance services, and IT consulting.
+                                We keep your systems running smoothly so you can focus on business.</p>
+                            <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
-                        <h3 class="service-title">IT Support & Maintenance</h3>
-                        <p class="service-description">24/7 technical support, maintenance services, and IT consulting.
-                            We keep your systems running smoothly so you can focus on business.</p>
-                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -215,10 +237,9 @@
             <div class="container">
                 <div class="features-content">
                     <div class="features-image slide-in-left">
-                        <div
-                            style="width: 100%; height: 400px; background-color: var(--bg-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-xl);">
-                            <i class="fas fa-chart-line" style="font-size: 72px; color: var(--primary-blue);"></i>
-                        </div>
+                        <img src="images/hero-tech.jpg" alt="Business growth and analytics" 
+                             style="width: 100%; height: 400px; border-radius: 12px; object-fit: cover; box-shadow: var(--shadow-xl);"
+                             loading="lazy" width="600" height="400">
                         <div class="features-badge">
                             <div class="features-badge-number">98%</div>
                             <div class="features-badge-text">Client Satisfaction</div>
@@ -342,44 +363,44 @@
                         <!-- First set of logos -->
                         <a href="https://www.techmahindra.com/" target="_blank" rel="noopener noreferrer"
                             class="partner-slide" aria-label="Tech Mahindra">
-                            <img src="images/techmahindra.svg" alt="Tech Mahindra">
+                            <img src="images/techmahindra.svg" alt="Tech Mahindra" loading="lazy" width="140" height="60">
                         </a>
                         <a href="https://focusgroup.co.uk/" target="_blank" rel="noopener noreferrer"
                             class="partner-slide" aria-label="Focus Group">
-                            <img src="images/focusgroup.svg" alt="Focus Group">
+                            <img src="images/focusgroup.svg" alt="Focus Group" loading="lazy" width="140" height="60">
                         </a>
                         <a href="https://ironserviceglobal.com/" target="_blank" rel="noopener noreferrer"
                             class="partner-slide" aria-label="Iron Service Global">
-                            <img src="images/ironservice.svg" alt="Iron Service Global">
+                            <img src="images/ironservice.svg" alt="Iron Service Global" loading="lazy" width="140" height="60">
                         </a>
                         <a href="https://www.h3c.com/en/" target="_blank" rel="noopener noreferrer"
                             class="partner-slide" aria-label="H3C">
-                            <img src="images/h3c.svg" alt="H3C">
+                            <img src="images/h3c.svg" alt="H3C" loading="lazy" width="140" height="60">
                         </a>
                         <a href="https://www.huawei.com/eu/" target="_blank" rel="noopener noreferrer"
                             class="partner-slide" aria-label="Huawei">
-                            <img src="images/huawei.svg" alt="Huawei">
+                            <img src="images/huawei.svg" alt="Huawei" loading="lazy" width="140" height="60">
                         </a>
                         <!-- Duplicate set for seamless loop -->
                         <a href="https://www.techmahindra.com/" target="_blank" rel="noopener noreferrer"
                             class="partner-slide" aria-label="Tech Mahindra">
-                            <img src="images/techmahindra.svg" alt="Tech Mahindra">
+                            <img src="images/techmahindra.svg" alt="Tech Mahindra" loading="lazy" width="140" height="60">
                         </a>
                         <a href="https://focusgroup.co.uk/" target="_blank" rel="noopener noreferrer"
                             class="partner-slide" aria-label="Focus Group">
-                            <img src="images/focusgroup.svg" alt="Focus Group">
+                            <img src="images/focusgroup.svg" alt="Focus Group" loading="lazy" width="140" height="60">
                         </a>
                         <a href="https://ironserviceglobal.com/" target="_blank" rel="noopener noreferrer"
                             class="partner-slide" aria-label="Iron Service Global">
-                            <img src="images/ironservice.svg" alt="Iron Service Global">
+                            <img src="images/ironservice.svg" alt="Iron Service Global" loading="lazy" width="140" height="60">
                         </a>
                         <a href="https://www.h3c.com/en/" target="_blank" rel="noopener noreferrer"
                             class="partner-slide" aria-label="H3C">
-                            <img src="images/h3c.svg" alt="H3C">
+                            <img src="images/h3c.svg" alt="H3C" loading="lazy" width="140" height="60">
                         </a>
                         <a href="https://www.huawei.com/eu/" target="_blank" rel="noopener noreferrer"
                             class="partner-slide" aria-label="Huawei">
-                            <img src="images/huawei.svg" alt="Huawei">
+                            <img src="images/huawei.svg" alt="Huawei" loading="lazy" width="140" height="60">
                         </a>
                     </div>
                 </div>
@@ -578,8 +599,8 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <!-- JavaScript - Deferred for faster page load -->
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>
